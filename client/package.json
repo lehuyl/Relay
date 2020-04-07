@@ -23,15 +23,23 @@
     "react-app-rewired": "^2.1.5",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
+<<<<<<< HEAD
     "react-scripts": "3.4.1",
     "typescript": "^3.8.3"
+=======
+    "react-scripts": "3.4.1"
+>>>>>>> martin
   },
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
+<<<<<<< HEAD
     "eject": "react-scripts eject",
     "tsc": "tsc"
+=======
+    "eject": "react-scripts eject"
+>>>>>>> martin
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -48,9 +56,8 @@
       "last 1 safari version"
     ]
   },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.",
-  "main": "index.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "devDependencies": {
+    "prettier": "2.0.4",
+    "typescript": "^3.8.3"
+  }
 }
