@@ -40,13 +40,14 @@
 
 .site-layout-content {
   background: #fff;
+  display: flex;
+  flex-direction: column;
   padding: 24px;
-  min-height: 686px;
+  min-height: 1080px;
 }
-#components-layout-demo-top .logo {
-  width: 120px;
-  height: 31px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px 24px 16px 0;
-  float: left;
+
+.site-layout-sider{
+  background: green;
+  min-height: 1080px;
 }
+
