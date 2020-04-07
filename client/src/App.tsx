@@ -10,12 +10,18 @@ import MainBody from '../src/components/MainBody';
 const { Header, Footer, Sider, Content } = Layout;
 const { SubMenu } = Menu;
 
+import socketIOClient from 'socket.io-client';
+
 const App = () => {
-  return (
-  <div>
-    <MainBody />
-  </div>
-  );
+    const endpoint = 'http://localhost:3001';
+    
+    const socket = socketIOClient(endpoint);
+    
+    return (
+        <div>
+            <MainBody />
+        </div>
+    );
 };
 
 export default App;
