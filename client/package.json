@@ -23,23 +23,15 @@
     "react-app-rewired": "^2.1.5",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
-<<<<<<< HEAD
     "react-scripts": "3.4.1",
     "typescript": "^3.8.3"
-=======
-    "react-scripts": "3.4.1"
->>>>>>> martin
   },
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-<<<<<<< HEAD
     "eject": "react-scripts eject",
     "tsc": "tsc"
-=======
-    "eject": "react-scripts eject"
->>>>>>> martin
   },
   "eslintConfig": {
     "extends": "react-app"
