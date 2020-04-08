@@ -9,8 +9,11 @@ import MainBody from '../src/components/MainBody';
 
 const { Header, Footer, Sider, Content } = Layout;
 const { SubMenu } = Menu;
+import { BrowserRouter as Router, Route } from 'react-router-dom'; 
 
 import socketIOClient from 'socket.io-client';
+import Join from './components/Join/Join';
+import Chat from './components/Chat/Chat';
 
 const App = () => {
     const endpoint = 'http://localhost:3001';
@@ -18,10 +21,11 @@ const App = () => {
     const socket = socketIOClient(endpoint);
     
     return (
-        <div>
-            <MainBody />
-        </div>
-    );
+        <Router>
+            <Route path="/" exact component={Join}/>
+            <Route path="/chat" component={Chat} />
+        </Router>
+    )
 };
 
 export default App;

@@ -1,29 +1,24 @@
-// src/server.ts
-import * as express from 'express';
-import * as http from 'http';
-import * as socketIo from 'socket.io';
+const express = require('express');
+const socketIo = require('socket.io');
+const http = require('http');
+
+const PORT = process.env.PORT || 5000;
+
+const router = require('./router');
 
 const app = express();
-app.set('port', process.env.PORT || 3001);
-
 const server = http.createServer(app);
-const io = require('socket.io')(http);
-
-app.get('/', (req: any, res: any) => {
-    res.send('hello 4world');
-});
-
+const io = socketIo(server);
 
 io.on('connection', (socket: any) => {
-    console.log('a user connected');
+    console.log('We have a new connection!');
 
-    socket.on('incoming data', (data: any) => {
-        socket.broadcast.emit('outgoing data', { num: data })
+    socket.on('disconnect', () => {
+        console.log('User left');
     });
+})
 
-    socket.on('disconnect', () => console.log('Client disconnected'));
-});
+app.use(router);
 
-server.listen(3001, function () {
-    console.log(`listening on port:${ app.get('port') }`);
-});
+server.listen(PORT, () => console.log(`Server has started on port ${PORT}`));
+
