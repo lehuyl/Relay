@@ -1,37 +1,31 @@
 import React from 'react';
-import {Layout, Avatar, Menu, Carousel, Radio } from 'antd';
+import {Layout, Avatar, Menu, Breadcrumb } from 'antd';
 import Title from "antd/lib/typography/Title";
 import '../src/App.scss'
+import '../src/components/MainBody'
+import MessageCard from './components/MessageCard'
 
 const { Header, Footer, Sider, Content } = Layout;
 const { SubMenu } = Menu;
 
-
-
-
 const App = () => {
   return (
   <div>
-    <Layout>
-      <Sider className="site-layout-sider">
-      <Menu theme="dark">
-          <Menu.Item>
-            Group 1
-         </Menu.Item>
-        </Menu>
-      </Sider>
-     <Layout>
-      <Header style={{padding:10}}>
-      <Avatar style={{float: 'right'}} icon="user"/>
-      <Title style={{color: 'white'}} level={3}> Relay </Title>
+   <Layout style={{ minHeight: '100vh', display: 'flex' }}>
+    <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
+      <div className="logo" />
+      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
+        <Menu.Item key="1">1 beain cell crew</Menu.Item>
+        <Menu.Item key="2">lmao xd</Menu.Item>
+        <Menu.Item key="3">AΣΣ</Menu.Item>
+      </Menu>
     </Header>
-      <Content>
-        <div className="site-layout-content"> Content </div>
-        </Content>
-      <Footer style={{textAlign: 'center'}}> 
-      xd lmao ©2020 Created by Steven and Martin
-      </Footer>
-  </Layout>
+    <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64}}>
+      <div className="site-layout-background" style={{ paddingTop: 24 }}>
+        <MessageCard />
+      </div>
+    </Content>
+    <Footer style={{ textAlign: 'center'}}> ©2020 Created by Martin and Steven</Footer>
   </Layout>
 </div>
   );
