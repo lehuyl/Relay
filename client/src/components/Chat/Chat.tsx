@@ -2,6 +2,13 @@ import React, { useState, useEffect } from 'react';
 import queryString from 'query-string';
 import io from 'socket.io-client';
 
+import InfoBar from '../InfoBar/InfoBar';
+import Input from '../Input/Input';
+import Messages from '../Messages/Messages';
+import UserList from '../UserList/UserList';
+
+import './Chat.scss';
+
 let socket;
 
 const Chat = ({ location }) => {
@@ -9,6 +16,7 @@ const Chat = ({ location }) => {
     const [room, setRoom] = useState('');
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
+    const [users, setUsers] = useState([]);
     const ENDPOINT = 'localhost:5000'
 
     useEffect(() => {
@@ -19,9 +27,9 @@ const Chat = ({ location }) => {
         setName(name as string);
         setRoom(room as string);
 
-        socket.emit('join', { name, room }, ({ error }) =>  { 
-            alert(error);
-         });
+        socket.emit('join', { name, room }, () =>  { 
+
+        });
 
          return () => {
              socket.emit('disconnect');
@@ -39,20 +47,27 @@ const Chat = ({ location }) => {
 
     const sendMessage = (event) => {
         event.preventDefault();
-        console.log('key pressed');
         if(message) {
             socket.emit('sendMessage', message, () => setMessage(''));
         }
     }
 
+    useEffect(() => {
+        socket.on('roomData', (users) => {
+            setUsers([users]);
+        })
+    }, [users]);
+
+
     return (
         <div className="outerContainer">
             <div className="container">
-                <input value={message} 
-                    onChange={(event) => setMessage(event.target.value)}
-                    onKeyPress={event => event.key === 'Enter' ? sendMessage(event): null }    
-                />
+                <InfoBar room={room} />
+                <Messages messages={messages} name={name}/>
+                <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
             </div>
+
+            <UserList users={users} />
         </div>
     );
 }
