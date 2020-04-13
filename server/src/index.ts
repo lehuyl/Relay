@@ -25,6 +25,8 @@ io.on('connection', (socket: any) => {
 
         socket.join(user.room);
 
+        console.log('current in room', getUsersInRoom(user.room));
+
         io.to(user.room).emit('roomData', { room: user.room , users: getUsersInRoom(user.room) });
 
         callback();
