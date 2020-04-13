@@ -13,3 +13,20 @@
   min-height: 100vh;
 }
 
+/* For demo */
+.ant-carousel .slick-slide {
+  text-align: center;
+  height: 300px;
+  width: 400px; 
+  line-height: 300px;
+  background: #364d79;
+  overflow: hidden;
+}
+
+.ant-carousel .slick-slide h3 {
+  color: #fff;
+}
+
+.site-layout-background {
+  background: #fff;
+}
