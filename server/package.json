@@ -10,16 +10,13 @@
     "start": "nodemon index.js",
     "tsc": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch-ts": "tsc -w",
-    "watch-node": "nodemon dist/index.js",
-    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript, Node\" -c \"yello.bold, cyan.bold\" \"npm run watch-ts\" \"npm run watch-node\""
+    "watch": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec 'ts-node' src/index.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "concurrently": "^5.1.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "helmet": "^3.22.0",
@@ -32,6 +29,7 @@
     "@types/node": "^13.11.0",
     "@types/socket.io": "^2.1.4",
     "prettier": "2.0.4",
+    "ts-node": "^8.8.2",
     "tslint": "^6.1.1",
     "typescript": "^3.8.3"
   }
