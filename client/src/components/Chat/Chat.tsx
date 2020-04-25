@@ -11,21 +11,20 @@ import './Chat.scss';
 
 let socket;
 
-const Chat = ({ location }) => {
+const Chat = ({ authentication }) => {
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
     const [users, setUsers] = useState([]);
     const ENDPOINT = 'localhost:5000'
-
+    
+    // console.log(location);
     useEffect(() => {
-        const { name, room }= queryString.parse(location.search);
-
+        const tempRoom = '1 beain cell';
         socket = io(ENDPOINT);
-
         setName(name as string);
-        setRoom(room as string);
+        setRoom(tempRoom as string);
 
         socket.emit('join', { name, room }, () =>  { 
 
@@ -37,7 +36,8 @@ const Chat = ({ location }) => {
              socket.off();
          };
 
-    }, [ENDPOINT, location.search]);
+    }, );
+    // }, [ENDPOINT, room]);
 
     useEffect(() => {
         socket.on('message', (message) => {
@@ -62,12 +62,12 @@ const Chat = ({ location }) => {
     return (
         <div className="outerContainer">
             <div className="container">
-                <InfoBar room={room} />
+                {/* {/* <InfoBar room={room} /> */}
                 <Messages messages={messages} name={name}/>
-                <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
+                <Input message={message} setMessage={setMessage} sendMessage={sendMessage} /> 
             </div>
 
-            <UserList users={users} />
+            {/* <UserList users={users} /> */}
         </div>
     );
 }

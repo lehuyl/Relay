@@ -1,6 +1,6 @@
 import React from 'react'
 import { Carousel } from 'antd';
-import MessageCard from '../card/MessageCard'
+import MessageCard from './MessageCard'
 
 const CardCategory = () => {
 

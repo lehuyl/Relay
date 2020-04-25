@@ -1,29 +1,29 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom'; 
 import {Layout, Avatar, Menu, Breadcrumb, Row, Col} from 'antd';
 import Title from "antd/lib/typography/Title";
 import '../src/App.scss'
 import '../src/components/MainBody'
-import CardCategory from './components/card/CardCategory'
-import MessageCard from './components/card/MessageCard'
+import CardCategory from './components/Card/CardCategory'
+import MessageCard from './components/Card/MessageCard'
 import MainBody from '../src/components/MainBody';
-
-const { Header, Footer, Sider, Content } = Layout;
-const { SubMenu } = Menu;
-import { BrowserRouter as Router, Route } from 'react-router-dom'; 
 
 import socketIOClient from 'socket.io-client';
 import Join from './components/Join/Join';
 import Chat from './components/Chat/Chat';
 
 const App = () => {
-    const endpoint = 'http://localhost:3001';
+    const { Header, Footer, Sider, Content } = Layout;
+    const { SubMenu } = Menu;
+    const endpoint = 'http://localhost:5000';
     
     const socket = socketIOClient(endpoint);
     
     return (
+        // <MainBody></MainBody>
         <Router>
             <Route path="/" exact component={Join}/>
-            <Route path="/chat" component={Chat} />
+            <Route path="/chat" component={MainBody} />
         </Router>
     )
 };
