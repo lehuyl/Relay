@@ -11,45 +11,21 @@ import { Link } from 'react-router-dom';
 import HeaderBar from './Header/Header';
 import FooterBar from './Footer/FootBar';
 import SideNav from './SideNav/SideNav';
+import ContentCard from './ContentCards/ContentCard';
 
 const { Header, Footer, Sider, Content } = Layout;
 const { SubMenu } = Menu;
 const { Search } = Input;
 
 const MainBody = () => {
-    const name: string = 'steven';
-
-    const selectedRoomName = () => {
-
-    };
+    // const name: string = 'steven';
 
     return (
         <Layout style={{ minHeight: '100vh' }}>
             <HeaderBar />
             <Layout>
                 <SideNav />
-                <Content
-                    className="site-layout-background"
-                    style={{ padding: '0 50px' }}
-                >
-                    <div style={{ paddingTop: 24 }}>
-                        <Row>
-                            <Col span={6}>
-                                <MessageCard />{' '}
-                            </Col>
-                            <Col span={6}>
-                                <MessageCard />{' '}
-                            </Col>
-                            <Col span={6}>
-                                <MessageCard />{' '}
-                            </Col>
-                            <Col span={6}>
-                                <MessageCard />{' '}
-                            </Col>
-                        </Row>
-                    </div>
-                    <Chat authentication={name} />
-                </Content>
+                <ContentCard />
                 
             </Layout>
             <FooterBar />
