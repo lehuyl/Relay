@@ -10,6 +10,9 @@ const { Content } = Layout;
 const ContentCard = () => {
     const name: string = 'steven';
 
+    // const { name } = this.props.match.params;
+    // console.log(name);
+
     return (
         <Content
             className="site-layout-background"

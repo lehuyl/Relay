@@ -7,18 +7,32 @@ import { Link } from 'react-router-dom';
 const { Sider } = Layout;
 
 const SideNav = () => {
+    const roomOne: string = '1beaincell';
+    const roomTwo: string = 'groupchat';
+
+    const rooms: string[] = [];
+    rooms.push(roomOne);
+    rooms.push(roomTwo);
+
+    const menuItems = [];
+    rooms.forEach((roomName: string) => {
+        menuItems.push(
+            <Menu.Item key={roomName}>
+                <Link
+                    to={{
+                        pathname: `/home/${roomName}`,
+                    }}
+                >
+                    {roomName}
+                </Link>
+            </Menu.Item>
+        );
+    });
+
     return (
         <Sider width={200} className="site-layout-background">
-            <Menu
-                mode="inline"
-                defaultSelectedKeys={['1']}
-                style={{ height: '100%', borderRight: 0 }}
-            >
-                <Menu.Item key="1">
-                    <Link to={`/testroom`} />1 beain cell
-                </Menu.Item>
-                <Menu.Item key="2"> some sorority group </Menu.Item>
-                <Menu.Item> + Add New Group </Menu.Item>
+            <Menu mode="inline" style={{ height: '100%', borderRight: 0 }}>
+                {menuItems}
             </Menu>
         </Sider>
     );

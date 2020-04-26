@@ -11,7 +11,7 @@ import './Chat.scss';
 
 let socket;
 
-const Chat = ({ authentication }) => {
+const Chat = (props) => {
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
     const [message, setMessage] = useState('');
@@ -19,15 +19,17 @@ const Chat = ({ authentication }) => {
     const [users, setUsers] = useState([]);
     const ENDPOINT = 'localhost:5000'
     
-    // console.log(location);
+
+    const { roomName } = props.match.params;
+
     useEffect(() => {
-        const tempRoom = '1 beain cell';
+        const tempName = 'steven';
         socket = io(ENDPOINT);
-        setName(name as string);
-        setRoom(tempRoom as string);
+        setName(tempName);
+        setRoom(roomName);
 
-        socket.emit('join', { name, room }, () =>  { 
-
+        socket.emit('join', { name, room }, (error) =>  { 
+            console.log(error);
         });
 
          return () => {
@@ -36,8 +38,8 @@ const Chat = ({ authentication }) => {
              socket.off();
          };
 
-    }, );
-    // }, [ENDPOINT, room]);
+    // }, );
+    }, [ENDPOINT, roomName]);
 
     useEffect(() => {
         socket.on('message', (message) => {
@@ -60,16 +62,14 @@ const Chat = ({ authentication }) => {
 
 
     return (
-        <div className="outerContainer">
+        // <div className="outerContainer">
             <div className="container">
-                {/* {/* <InfoBar room={room} /> */}
+                <InfoBar room={room} />
                 <Messages messages={messages} name={name}/>
                 <Input message={message} setMessage={setMessage} sendMessage={sendMessage} /> 
             </div>
-
-            {/* <UserList users={users} /> */}
-        </div>
-    );
+        // </div>
+    )
 }
 
 export default Chat;
